@@ -51,12 +51,36 @@ function calculateMenAverageAge(people, century) {
    let ages = mensCentury.map(function(person) {
      return person.died - person.born;
    })
-   console.log(ages)
    let sumAges = 0;
-   for (var key in ages) {
+   for (let key in ages) {
+    sumAges += ages[key];
+    }
+    return sumAges / ages.length;
+}
+
+function calculateWomenAverageAge(people, withChildren) {
+  let womens = people.filter(function(person) {
+    return person.sex === "f";
+  })
+  let womensWithChildren = womens.filter(function(person) {
+    for (let key in people) {
+      if (person.name === people[key].mother) {
+        return person; 
+      }
+    }
+  })
+  console.log(womens);
+  console.log(womensWithChildren);
+  let target = withChildren !== undefined || false ? womensWithChildren : womens;
+  let ages = target.map(function(person) {
+    return person.died - person.born;
+  })
+  let sumAges = 0;
+   for (let key in ages) {
     sumAges += ages[key];
     }
     return sumAges / ages.length;
 }
 console.log(calculateMenAverageAge(people, 20));
 console.log(calculateMenAverageAge(people));
+console.log(calculateWomenAverageAge(people, true));
