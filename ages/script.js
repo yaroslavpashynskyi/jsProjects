@@ -71,7 +71,7 @@ function calculateWomenAverageAge(people, withChildren) {
   })
   console.log(womens);
   console.log(womensWithChildren);
-  let target = withChildren !== undefined || false ? womensWithChildren : womens;
+  let target = withChildren !== undefined || true ? womensWithChildren : womens;
   let ages = target.map(function(person) {
     return person.died - person.born;
   })
