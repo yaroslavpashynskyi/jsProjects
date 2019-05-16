@@ -42,20 +42,22 @@ const people = [
   {"name": "Jacobus Bernardus van Brussel", "sex": "m", "born": 1736, "died": 1809, "father": "Jan van Brussel", "mother": "Elisabeth Haverbeke"}
 ];
 
-
+function calculateAverageAge(people) {
+  let ages = people.map(function(person) {
+    return person.died - person.born;
+  })
+  let sumAges = 0;
+  for (let key in ages) {
+   sumAges += ages[key];
+   }
+   return sumAges / ages.length;
+}
 
 function calculateMenAverageAge(people, century) {
   let mensCentury = people.filter(function(person) {
     return century === undefined ? person.sex === "m" : person.sex === "m" && Math.ceil(person.died / 100) === century;
 })
-   let ages = mensCentury.map(function(person) {
-     return person.died - person.born;
-   })
-   let sumAges = 0;
-   for (let key in ages) {
-    sumAges += ages[key];
-    }
-    return sumAges / ages.length;
+   return calculateAverageAge(mensCentury);
 }
 
 function calculateWomenAverageAge(people, withChildren) {
@@ -69,18 +71,22 @@ function calculateWomenAverageAge(people, withChildren) {
       }
     }
   })
-  console.log(womens);
-  console.log(womensWithChildren);
-  let target = withChildren !== undefined || true ? womensWithChildren : womens;
-  let ages = target.map(function(person) {
-    return person.died - person.born;
-  })
-  let sumAges = 0;
-   for (let key in ages) {
-    sumAges += ages[key];
-    }
-    return sumAges / ages.length;
+  let target = withChildren !== undefined || false ? womensWithChildren : womens;
+  return calculateAverageAge(target);
 }
 console.log(calculateMenAverageAge(people, 20));
 console.log(calculateMenAverageAge(people));
 console.log(calculateWomenAverageAge(people, true));
+
+test(+calculateMenAverageAge(people).toFixed(2), 61.67, 'Average men age');
+test(+calculateMenAverageAge(people, 18).toFixed(2), 56.50, 'Average men age in 18 century');
+test(+calculateWomenAverageAge(people).toFixed(2), 54.56, 'Average women age');
+test(+calculateWomenAverageAge(people, true).toFixed(2), 54.15, 'Average mothers age');
+function test(actual, expected, testName = '') {
+  if (actual !== expected) {
+    const errorMessage = `Test ${testName} failed: ${actual} is not equal to expected ${expected}`;
+    console.error(errorMessage);
+  } else {
+    console.log(`Test ${testName} passed!`);
+  }
+}
