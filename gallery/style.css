@@ -1,0 +1,56 @@
+#main-container {
+    width: 400px;
+    height: 400px;
+    border: 3px solid black;
+    margin: auto;
+}
+
+#gallery-container {
+    width: 400px;
+    height: 100px;
+    border: 3px solid black;
+    margin: auto;
+    margin-top: 20px;
+}
+
+.photo {
+    width: 100px;
+    height: 100px;
+    float: left;
+    background-size: cover;
+    cursor: pointer;
+}
+
+#main-photo {
+    width: 380px;
+    height: 380px;
+    margin: auto;
+    margin-top: 10px;
+    background-size: cover;
+}
+
+.image0 {
+    background-image: url("images/meme0.jpg");
+}
+.image1 {
+    background-image: url("images/meme1.jpg");
+}
+.image2 {
+    background-image: url("images/meme2.jpg");
+}
+.image3 {
+    background-image: url("images/meme3.jpg");
+}
+
+#p0 {
+    background-image: url("images/meme0.jpg");
+}
+#p1 {
+    background-image: url("images/meme1.jpg");
+}
+#p2 {
+    background-image: url("images/meme2.jpg");
+}
+#p3 {
+    background-image: url("images/meme3.jpg");
+}

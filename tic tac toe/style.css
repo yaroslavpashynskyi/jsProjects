@@ -1,0 +1,41 @@
+#container {
+    width: 320px;
+    height: 320px;
+    margin-top: 100px;
+    margin: auto;
+}
+
+#container h1 {
+    text-align: center;
+    font-size: 40px;
+    margin-bottom: 50px;
+}
+
+.q {
+    height: 100px;
+    width: 100px;
+    float: left;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    cursor: pointer;
+    font-family: sans-serif;
+    font-size: 100px;
+    text-transform: uppercase;
+}
+
+.q:hover {
+    background-color: azure;
+}
+
+#q0, #q1, #q2, #q3, #q4, #q5 {
+    border-bottom: 10px solid black;
+}
+
+#q1, #q2, #q4, #q5, #q7, #q8 {
+    border-left: 10px solid black;
+}
+
+.winner {
+    color: red;
+}
